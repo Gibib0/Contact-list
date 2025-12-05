@@ -3,7 +3,30 @@
 }
 
 .main-container {
+	width: 100%;
 	display: flex;
 	gap: 20px;
-	padding: 20px;
+}
+
+.main-wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.main-btns {
+	margin-top: 60px;
+	display: flex;
+	gap: 20px;
+}
+
+.main-btns button {
+	min-width: 90px;
+	padding: 8px 12px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background: white;
+	cursor: pointer;
+	font-size: 14px;
 }

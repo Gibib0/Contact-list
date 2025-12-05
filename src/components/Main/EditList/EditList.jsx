@@ -21,20 +21,12 @@ class EditList extends Component {
 	}
 
 	render() {
-		const {currentContact, onNew, onSave, onDelete} = this.props
-
 		return (
 			<div className='edit-list'>
 				{this.renderInput('firstName', 'First Name')}
 				{this.renderInput('lastName', 'Last Name')}
 				{this.renderInput('email', 'Email')}
 				{this.renderInput('phone', 'Phone')}
-
-				<div className='btns'>
-					<button onClick={onNew}>New</button>
-					<button onClick={onSave}>Save</button>
-					{currentContact && <button onClick={onDelete}>Delete</button>}
-				</div>
 			</div>
 		)
 	}

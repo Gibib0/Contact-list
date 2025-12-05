@@ -3,7 +3,7 @@ import './ContactList.css'
 
 class ContactList extends Component {
 	render () {
-		const {contacts, onSelectContact, deleteContact} = this.props
+		const {contacts, onSelectContact, onDeleteContact} = this.props
 
 		return (
 			<div className='contact-list'>
@@ -14,7 +14,7 @@ class ContactList extends Component {
 						onDoubleClick={() => onSelectContact(c)}
 					>
 						{c.firstName} {c.lastName}
-						<button className='delete-btn' onClick={() => deleteContact(c.id)}>x</button>
+						<button className='delete-btn' onClick={() => onDeleteContact(c.id)}>x</button>
 					</div>
 				))}
 			</div>

@@ -3,7 +3,7 @@
 }
 
 .edit-list {
-	width: 250px;
+	width: 50%;
 	border: 2px solid black;
 	padding: 10px;
 }
@@ -23,15 +23,9 @@
 
 .clear-btn {
 	background: none;
-	border: none;
+	border: 1px solid black;
 	cursor: pointer;
 	position: absolute;
 	right: 5px;
 	top: 5px;
-}
-
-.btns {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 20px;
 }

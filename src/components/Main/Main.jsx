@@ -15,25 +15,32 @@ class Main extends Component {
 			onNew,
 			onSave,
 			onDelete,
-			deleteContact
+			onDeleteContact
 		} = this.props
 
 		return (
-			<div className='main-container'>
-				<ContactList 
-					contacts={contacts}
-					onSelectContact={onSelectContact}
-					deleteContact={deleteContact}
-				/>
-				<EditList 
-					form={form}
-					currentContact={currentContact}
-					onFormChange={onFormChange}
-					clearField={clearField}
-					onNew={onNew}
-					onSave={onSave}
-					onDelete={onDelete}
-				/>
+			<div className='main-wrapper'>
+				<div className='main-container'>
+					<ContactList 
+						contacts={contacts}
+						onSelectContact={onSelectContact}
+						onDeleteContact={onDeleteContact}
+					/>
+					<EditList 
+						form={form}
+						currentContact={currentContact}
+						onFormChange={onFormChange}
+						clearField={clearField}
+					/>
+				</div>
+
+				<div className='main-btns'>
+					<button onClick={onNew}>New</button>
+					<button onClick={onSave}>Save</button>
+					{currentContact && (
+						<button onClick={onDelete}>Delete</button>
+					)}
+				</div>
 			</div>
 		)
 	}

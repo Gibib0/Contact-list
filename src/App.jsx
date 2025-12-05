@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
+import './App.css'
 
 class App extends Component {
   constructor(props) {
@@ -115,19 +116,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='app-container'>
         <Header />
         <Main
           contacts={this.state.contacts}
           currentContact={this.state.currentContact}
           form={this.state.form}
-          onSelectContact={this.onSelectContact}
-          onFormChange={this.onFormChange}
+          onSelectContact={this.handleSelectContact}
+          onFormChange={this.handleFormChange}
           clearField={this.clearField}
           onNew={this.handleNew}
           onSave={this.handleSave}
           onDelete={this.handleDeleteCurrentContact}
-          deleteContact={this.deleteContact}
+          onDeleteContact={this.deleteContact}
         />
       </div>
     )
