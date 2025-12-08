@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import ContactList from './ContactList/ContactList'
+import ContactList from '../ContactList/ContactList'
 import EditList from './EditList/EditList'
 import './Main.css'
 
