@@ -4,20 +4,11 @@
 
 .contact-list {
 	width: 50%;
+  padding: 10px;
 }
 
-.contact-item {
-	border: 2px solid black;
-	padding: 5px;
-	margin-bottom: 10px;
-	position: relative;
-}
-
-.delete-btn {
-	position: absolute;
-	right: 5px;
-	top: 5px;
-	background: none;
-	border: 1px solid black;
-	cursor: pointer;
+.contact-list-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
