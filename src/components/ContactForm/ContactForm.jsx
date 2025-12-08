@@ -6,6 +6,55 @@ class ContactForm extends Component {
 		form: this.props.contact
 	}
 
+	static getDerivedStateFromProps(nextProps, prevState) {
+		if (nextProps.contact.id !== prevState.form.id) {
+			return {
+				form: {...nextProps.contact}
+			}
+		}
+		return null
+	}
+
+	onInputChange = (e) => {
+		const {name, value} = e.target
+		this.setState({
+			form: {
+				...this.state.form,
+				[name]: value
+			}
+		})
+	}
+
+	onFormSubmit = (e) => {
+		e.preventDefault()
+		this.props.onSave(this.state.form)
+
+		if (!this.state.isEditing) {
+			this.setState({
+				form: {
+					id: null,
+					firstName: '',
+					lastName: '',
+					email: '',
+					phone: ''
+				}
+			})
+		}
+	}
+
+	handleClearField = (field) => {
+		this.setState({
+			form: {
+				...this.state.form,
+				[field]: ''
+			}
+		})
+	}
+
+	handleNew = () => {
+		this.props.onNew()
+	}
+
 	render() {
 		const {isEditing} = this.props
 		const {form} = this.state
@@ -118,55 +167,6 @@ class ContactForm extends Component {
 				</div>
 			</form>
 		)
-	}
-
-	static getDerivedStateFromProps(nextProps, prevState) {
-		if (nextProps.contact.id !== prevState.form.id) {
-			return {
-				form: {...nextProps.contact}
-			}
-		}
-		return null
-	}
-
-	onInputChange = (e) => {
-		const {name, value} = e.target
-		this.setState({
-			form: {
-				...this.state.form,
-				[name]: value
-			}
-		})
-	}
-
-	onFormSubmit = (e) => {
-		e.preventDefault()
-		this.props.onSave(this.state.form)
-
-		if (!this.state.isEditing) {
-			this.setState({
-				form: {
-					id: null,
-					firstName: '',
-					lastName: '',
-					email: '',
-					phone: ''
-				}
-			})
-		}
-	}
-
-	handleClearField = (field) => {
-		this.setState({
-			form: {
-				...this.state.form,
-				[field]: ''
-			}
-		})
-	}
-
-	handleNew = () => {
-		this.props.onNew()
 	}
 }
 
