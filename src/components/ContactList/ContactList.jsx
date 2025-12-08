@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import ContactItem from '../ContactItem/ContactItem'
 import './ContactList.css'
 
 class ContactList extends Component {
@@ -7,16 +8,16 @@ class ContactList extends Component {
 
 		return (
 			<div className='contact-list'>
-				{contacts.map((c) => (
-					<div
-						key={c.id}
-						className='contact-item'
-						onDoubleClick={() => onSelectContact(c)}
-					>
-						{c.firstName} {c.lastName}
-						<button className='delete-btn' onClick={() => onDeleteContact(c.id)}>x</button>
-					</div>
-				))}
+				<div className='contact-list-content'>
+					{contacts.map(contact => (
+						<ContactItem
+							key={contact.id}
+							contact={contact}
+							onSelect={onSelectContact}
+							onDelete={onDeleteContact}
+						/>
+					))}
+				</div>
 			</div>
 		)
 	}
