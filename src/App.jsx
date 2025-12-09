@@ -5,9 +5,17 @@ import ContactForm from './components/ContactForm/ContactForm'
 import './App.css'
 
 class App extends Component {
+  createEmptyContact = () => ({
+    id: null,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
+  })
+
   state = {
     contacts: [],
-    currentContact: null,
+    currentContact: this.createEmptyContact(),
     isEditing: false
   }
 
@@ -19,14 +27,6 @@ class App extends Component {
   saveToLocalStorage = (contacts) => {
     localStorage.setItem('contacts', JSON.stringify(contacts))
   }
-
-  createEmptyContact = () => ({
-    id: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: ''
-  })
 
   handleSelectContact = (contact) => {
     this.setState({
@@ -47,12 +47,11 @@ class App extends Component {
     let updatedContacts
 
     if (isEditing) {
-      updatedContacts = contacts.map(contact => 
-        contact.id === contact.id ? {...contact} : contact
-      )
+      updatedContacts = contacts.map(c => (c.id === contact.id ? {...contact} : c))
       this.setState({
         contacts: updatedContacts,
-        currentContact: {...contact}
+        currentContact: {...contact},
+        isEditing: true
       })
     } else {
       const newContact = {
@@ -62,7 +61,8 @@ class App extends Component {
       updatedContacts = [...contacts, newContact]
       this.setState({
         contacts: updatedContacts,
-        currentContact: this.createEmptyContact()
+        currentContact: this.createEmptyContact(),
+        isEditing: false
       })
     }
 
@@ -95,17 +95,17 @@ class App extends Component {
           <div className='main-container'>
             <ContactList 
               contacts={contacts}
-              onSelectContact={this.handleSelectContact}
-              onDeleteContact={this.handleDeleteContact}
+              onSelect={this.handleSelectContact}
+              onDelete={this.handleDeleteContact}
             />
 
             <div className='form'>
               <ContactForm
-                contact={currentContact || this.createEmptyContact()}
+                contact={currentContact}
                 isEditing={isEditing}
                 onSave={this.handleSaveContact}
                 onNew={this.handleNewContact}
-                onDelete={() => this.handleDeleteContact(currentContact?.id)}
+                onDelete={currentContact?.id ? () => this.handleDeleteContact(currentContact.id) : null}
               />
             </div>
           </div>

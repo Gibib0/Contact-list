@@ -3,11 +3,17 @@ import './ContactForm.css'
 
 class ContactForm extends Component {
 	state = {
-		form: this.props.contact
+		form: this.props.contact || {
+			id: null,
+			firstName: '',
+			lastName: '',
+			email: '',
+			phone: ''
+		}
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		if (nextProps.contact.id !== prevState.form.id) {
+		if (nextProps.contact && nextProps.contact.id !== prevState.form.id) {
 			return {
 				form: {...nextProps.contact}
 			}
@@ -27,7 +33,8 @@ class ContactForm extends Component {
 
 	onFormSubmit = (e) => {
 		e.preventDefault()
-		this.props.onSave(this.state.form)
+		const {form} = this.state
+		this.props.onSave(form)
 
 		if (!this.state.isEditing) {
 			this.setState({
@@ -38,6 +45,10 @@ class ContactForm extends Component {
 					email: '',
 					phone: ''
 				}
+			})
+		} else {
+			this.setState({
+				form: {...form}
 			})
 		}
 	}
@@ -91,7 +102,7 @@ class ContactForm extends Component {
               name="lastName"
               value={form.lastName || ''}
               onChange={this.onInputChange}
-              placeholder="First Name"
+              placeholder="Last Name"
               className="form-input"
             />
 

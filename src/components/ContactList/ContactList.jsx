@@ -4,7 +4,7 @@ import './ContactList.css'
 
 class ContactList extends Component {
 	render () {
-		const {contacts, onSelectContact, onDeleteContact} = this.props
+		const {contacts, onSelect, onDelete} = this.props
 
 		return (
 			<div className='contact-list'>
@@ -13,8 +13,8 @@ class ContactList extends Component {
 						<ContactItem
 							key={contact.id}
 							contact={contact}
-							onSelect={onSelectContact}
-							onDelete={onDeleteContact}
+							onSelect={onSelect}
+							onDelete={onDelete}
 						/>
 					))}
 				</div>
