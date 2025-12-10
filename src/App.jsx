@@ -105,7 +105,7 @@ class App extends Component {
                 isEditing={isEditing}
                 onSave={this.handleSaveContact}
                 onNew={this.handleNewContact}
-                onDelete={currentContact?.id ? () => this.handleDeleteContact(currentContact.id) : null}
+                onDelete={this.handleDeleteContact}
               />
             </div>
           </div>

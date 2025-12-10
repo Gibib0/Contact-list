@@ -3,17 +3,11 @@ import './ContactForm.css'
 
 class ContactForm extends Component {
 	state = {
-		form: this.props.contact || {
-			id: null,
-			firstName: '',
-			lastName: '',
-			email: '',
-			phone: ''
-		}
+		form: {...this.props.contact}
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
-		if (nextProps.contact && nextProps.contact.id !== prevState.form.id) {
+		if (nextProps.contact.id !== prevState.form.id) {
 			return {
 				form: {...nextProps.contact}
 			}
@@ -77,7 +71,7 @@ class ContactForm extends Component {
 						<input
               type="text"
               name="firstName"
-              value={form.firstName || ''}
+              value={form.firstName}
               onChange={this.onInputChange}
               placeholder="First Name"
               className="form-input"
@@ -100,7 +94,7 @@ class ContactForm extends Component {
 						<input
               type="text"
               name="lastName"
-              value={form.lastName || ''}
+              value={form.lastName}
               onChange={this.onInputChange}
               placeholder="Last Name"
               className="form-input"
@@ -123,7 +117,7 @@ class ContactForm extends Component {
 						<input
               type="email"
               name="email"
-              value={form.email || ''}
+              value={form.email}
               onChange={this.onInputChange}
               placeholder="Email"
               className="form-input"
@@ -146,7 +140,7 @@ class ContactForm extends Component {
 						<input
               type="tel"
               name="phone"
-              value={form.phone || ''}
+              value={form.phone}
               onChange={this.onInputChange}
               placeholder="Phone"
               className="form-input"

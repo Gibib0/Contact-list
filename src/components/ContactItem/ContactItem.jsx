@@ -2,7 +2,7 @@ import { Component } from "react";
 import './ContactItem.css'
 
 class ContactItem extends Component {
-	handleDoubleClick = () => {
+	handleSelect = () => {
 		this.props.onSelect(this.props.contact)
 	}
 
@@ -16,7 +16,7 @@ class ContactItem extends Component {
 		const {firstName, lastName} = contact
 
 		return (
-			<div className="contact-item" onDoubleClick={this.handleDoubleClick}>
+			<div className="contact-item" onDoubleClick={this.handleSelect}>
 				<span className="contact-name">{firstName} {lastName}</span>
 				<button className="contact-delete-btn" onClick={this.handleDeleteClick}>x</button>
 			</div>
