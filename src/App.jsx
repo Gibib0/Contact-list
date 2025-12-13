@@ -30,7 +30,7 @@ class App extends Component {
 
   handleSelectContact = (contact) => {
     this.setState({
-      currentContact: { ...contact },
+      currentContact: contact,
       isEditing: true
     })
   }
@@ -47,10 +47,10 @@ class App extends Component {
     let updatedContacts
 
     if (isEditing) {
-      updatedContacts = contacts.map(c => (c.id === contact.id ? {...contact} : c))
+      updatedContacts = contacts.map(c => (c.id === contact.id ? contact : c))
       this.setState({
         contacts: updatedContacts,
-        currentContact: {...contact},
+        currentContact: contact,
         isEditing: true
       })
     } else {

@@ -60,6 +60,11 @@ class ContactForm extends Component {
 		this.props.onNew()
 	}
 
+	handleDeleteClick = () => {
+		const {form} = this.state
+		this.props.onDelete(form.id)
+	}
+
 	render() {
 		const {isEditing} = this.props
 		const {form} = this.state
@@ -167,7 +172,7 @@ class ContactForm extends Component {
           </button>
 
 					{isEditing &&(
-						<button type="button" className="btn btn-delete" onClick={this.props.onDelete}>Delete</button>
+						<button type="button" className="btn btn-delete" onClick={this.handleDeleteClick}>Delete</button>
 					)}
 				</div>
 			</form>
